@@ -17,7 +17,7 @@ class Customer (models.Model):
     address = models.CharField(max_length=288)
     citystatezip = models.CharField(max_length=288)
     birthdate = models.DateField()
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=288)
     timezone = models.CharField(max_length=288)
     lat = models.FloatField()
     long = models.FloatField()
@@ -28,7 +28,7 @@ class Customer (models.Model):
 
 class Order (models.Model):
     orderid = models.IntegerField(primary_key=True)
-    customerid = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     ordered = models.DateField()
     shipped = models.DateField()
     items = models.TextField(blank=True)
@@ -39,8 +39,8 @@ class Order (models.Model):
 
 
 class OrderItem(models.Model):
-    orderid = models.ForeignKey(Order , on_delete=models.CASCADE)
-    sku = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order , on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     qty = models.IntegerField()
     unit_price = models.DecimalField(max_digits=20, decimal_places=3)
 
