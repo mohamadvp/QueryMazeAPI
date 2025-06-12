@@ -16,7 +16,7 @@ def name_to_number(name: str) -> str:
     return ''.join(t9.get(char.upper(), '') for char in name if name.isalpha())
 
 
-def run():
+def find_investigator():
     print("Looking for the phone number of investigator ...")
 
     for customer in Customer.objects.all():

@@ -1,7 +1,7 @@
 from querymaze.models import Order, Customer, OrderItem
 
 
-def run():
+def find_contractor():
     print("Looking for the phone number of contractor ...")
 
     customers = Customer.objects.filter(
@@ -14,6 +14,6 @@ def run():
             item = OrderItem.objects.filter(order=order).values_list('product__desc', flat=True)
             if any('coffee' in desc.lower() for desc in item):
                 print(f"The Contractor found:  {customer.name} phone - {customer.phone}")
-                return
+                return customer
         
     print("No Matching ...")
