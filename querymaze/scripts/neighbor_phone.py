@@ -24,5 +24,5 @@ def find_neighbor():
         if not (CancerDate(birthdate)):
             continue
         print(f"The Neighbor found: {customer.name} - phone: {customer.phone}")
-        return
+        return customer
     print("Not Match .....")

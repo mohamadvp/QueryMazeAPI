@@ -29,8 +29,8 @@ class Customer (models.Model):
 class Order (models.Model):
     orderid = models.IntegerField(primary_key=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    ordered = models.DateField()
-    shipped = models.DateField()
+    ordered = models.DateTimeField()
+    shipped = models.DateTimeField()
     items = models.TextField(blank=True)
     total = models.DecimalField(max_digits=20, decimal_places=3)
 
