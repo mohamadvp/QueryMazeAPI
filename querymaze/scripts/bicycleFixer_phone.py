@@ -15,6 +15,6 @@ def bicycleFixer_phone():
             item = OrderItem.objects.filter(order=order).values_list('product__desc',flat=True)
             time_diff = order.shipped - order.ordered
             if any('bagel' in desc.lower() for desc in item) and  time_diff <= timedelta(minutes=10):
-                print(f" The bicycle fixer {customer.name} -  phone:{customer.phone} {order.ordered} {order.shipped}")    
+                print(f" The bicycle fixer {customer.name} - phone:{customer.phone}")    
                 return
     print('Not Match...')
