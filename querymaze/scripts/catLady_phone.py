@@ -1,6 +1,6 @@
 from querymaze.models import Customer, Order, OrderItem
 
-def run():
+def catLady():
     print("Looking for the Cat Lady...")
 
     for customer in Customer.objects.filter(citystatezip__icontains='Staten Island'):
