@@ -2,7 +2,7 @@ from django.db.models import F, ExpressionWrapper, DecimalField
 from querymaze.models import Customer, OrderItem
 
 
-def cousin():
+def find_cousin():
     print("Looking for the cousin...")
 
     items = OrderItem.objects.annotate(profit=ExpressionWrapper(
@@ -23,5 +23,6 @@ def cousin():
     if sorted_customer:
         customer, profit = sorted_customer[0]
         print(f"The Cousin name: {customer.name} - phone: {customer.phone}")
+        return (item, customer)
     else:
         print('"No match found."')
