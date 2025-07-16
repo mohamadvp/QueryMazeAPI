@@ -2,7 +2,7 @@ from datetime import timedelta
 from querymaze.models import Customer, Order, OrderItem
 from .neighbor_phone import find_neighbor
 
-def bicycleFixer_phone():
+def find_bicycleFixer():
     neighbor = find_neighbor()
     print("Looking for the phone number of bicycle fixer ...")
 
@@ -17,4 +17,4 @@ def bicycleFixer_phone():
             if any('bagel' in desc.lower() for desc in item) and  time_diff <= timedelta(minutes=10):
                 print(f" The bicycle fixer {customer.name} - phone:{customer.phone}")    
                 return
-    print('Not Match...')
+    print('No match found...')

@@ -1,6 +1,6 @@
 from querymaze.models import Customer, Order, OrderItem
 
-def catLady():
+def find_catLady():
     print("Looking for the Cat Lady...")
 
     for customer in Customer.objects.filter(citystatezip__icontains='Staten Island'):
@@ -9,4 +9,4 @@ def catLady():
         if any('cat' in desc.lower() for desc in items):
             print(f"The Cat Lady {customer.name} - phone: {customer.phone}")
             return
-    print("No match found.")
+    print('No match found...')

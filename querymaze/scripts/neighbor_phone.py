@@ -25,4 +25,4 @@ def find_neighbor():
             continue
         print(f"The Neighbor found: {customer.name} - phone: {customer.phone}")
         return customer
-    print("Not Match .....")
+    print('No match found...')

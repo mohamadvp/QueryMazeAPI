@@ -6,7 +6,7 @@ import re
 def normalize_desc(desc):
     return re.sub(r"\s*\(.*?\)", "", desc).strip().lower()
 
-def exBoyfriend():
+def find_exBoyfriend():
     item, cousin = find_cousin()
     order = Order.objects.filter(customer = cousin)
     items = OrderItem.objects.filter(order__in = order , product__sku__icontains="COL")
@@ -28,4 +28,4 @@ def exBoyfriend():
         exBoyfriend = matching_item.first()
         print (f"The Ex boyfriend name: {exBoyfriend.order.customer.name} - phone: {exBoyfriend.order.customer.phone}")
     else:
-        print('Not Match...')
+        print('No match found...')

@@ -25,4 +25,4 @@ def find_cousin():
         print(f"The Cousin name: {customer.name} - phone: {customer.phone}")
         return (item, customer)
     else:
-        print('"No match found."')
+        print('No match found...')
