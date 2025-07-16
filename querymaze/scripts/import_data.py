@@ -1,14 +1,18 @@
+import environ
+import os
 import csv
 from querymaze.models import Product, Customer, Order, OrderItem
 from datetime import datetime
 from django.utils import timezone
 from django.db import transaction
 
+env = environ.Env()
+environ.Env.read_env()
 
 def import_data():
     try:
         with transaction.atomic():
-            with open("/home/mohammad/Downloads/noahs-csv/5784/noahs-products.csv") as f:
+            with open(env("PRODUCT_CSV")) as f:
                 print("Importing products...")
                 reader = csv.DictReader(f)
                 for row in reader:
@@ -18,7 +22,7 @@ def import_data():
                         wholesale_cost=row['wholesale_cost'],
                         dims_cm=row['dims_cm'],
                     )
-            with open("/home/mohammad/Downloads/noahs-csv/5784/noahs-customers.csv") as f:
+            with open(env("CUSTOMER-CSV")) as f:
                 print("Importing customers...")
                 reader = csv.DictReader(f)
                 for row in reader:
@@ -33,7 +37,7 @@ def import_data():
                         lat=float(row["lat"]),
                         long=float(row["long"]),
                     )
-            with open("/home/mohammad/Downloads/noahs-csv/5784/noahs-orders.csv") as f:
+            with open(env("ORDER_CSV")) as f:
                 print("Importing orders...")
                 reader = csv.DictReader(f)
                 for row in reader:
@@ -47,7 +51,7 @@ def import_data():
                             'total': row["total"],
                         }
                     )
-            with open("/home/mohammad/Downloads/noahs-csv/5784/noahs-orders_items.csv") as f:
+            with open(env("ORDERITEM_CSV")) as f:
                 print("Importing orders item...")
                 reader = csv.DictReader(f)
                 for row in reader:
