@@ -7,13 +7,10 @@ def find_contractor():
     customers = Customer.objects.filter(
         name__regex=r'^J.*\sP.*'
     )
-
-    for customer in customers:
-        orders = Order.objects.filter(customer=customer, ordered__year=2017)
-        for order in orders:
-            item = OrderItem.objects.filter(order=order).values_list('product__desc', flat=True)
-            if any('coffee' in desc.lower() for desc in item):
-                print(f"The Contractor found:  {customer.name} phone - {customer.phone}")
-                return customer
-        
-    print('No match found...')
+    orders = Order.objects.filter(customer__in=customers, ordered__year=2017)
+    item = OrderItem.objects.filter(order__in=orders, product__desc__icontains='coffee').first()
+    if item:
+        print(f"The Contractor found:  {item.order.customer.name} phone - {item.order.customer.phone}")
+        return item.order.customer
+    else:
+        print('No match found...')
