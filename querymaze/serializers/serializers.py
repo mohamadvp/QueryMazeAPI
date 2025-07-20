@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Customer,Product,Order,OrderItem
+from ..models import Customer,Product,Order,OrderItem
 
 class CustomerSerializer(serializers.ModelSerializer):
     total_number = serializers.IntegerField()
@@ -7,7 +7,7 @@ class CustomerSerializer(serializers.ModelSerializer):
     last_order = serializers.DateTimeField()
     class Meta:
         model = Customer
-        fields = ['name','phone','birthdate','total_number','total_spent','last_order']
+        fields = ['customerid','name','phone','birthdate','total_number','total_spent','last_order']
 
 class TopCustomerSerializer(serializers.ModelSerializer):
     total_spent  = serializers.DecimalField(max_digits=20 , decimal_places=3)
@@ -56,10 +56,14 @@ class OrderSerializer(serializers.ModelSerializer):
     #     return obj.customer.phone
 
 
+
+
+# source 
+
 class OrderReportSerializer(serializers.ModelSerializer):
-    customer = MiniCustomerSerializer(read_only= True)
-    orderitem_set = OrderItemSerializer(many= True, read_only = True)
+    customer_name = serializers.CharField(source = 'customer.name') 
+    item = OrderItemSerializer(source='orderitem_set',many= True, read_only = True)
     
     class Meta:
         model = Order
-        fields = ['orderid','ordered','customer','orderitem_set']
+        fields = ['orderid','ordered','customer_name','item']

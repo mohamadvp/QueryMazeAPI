@@ -1,7 +1,11 @@
 from django.db.models import Count, Sum, Max, Prefetch, ExpressionWrapper, DecimalField, F
 from rest_framework.generics import ListAPIView
-from .serializers import CustomerSerializer, TopCustomerSerializer, OrderReportSerializer, BestSellingProductSerializer, OrderSerializer
-from .models import Customer, Product, Order, OrderItem
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from ..serializers.serializers import CustomerSerializer, TopCustomerSerializer, OrderReportSerializer, BestSellingProductSerializer
+from ..serializers.createOrder import OrderCreateSerializer
+from ..models import Customer, Product, Order, OrderItem
 
 
 class CustomerViewSet(ListAPIView):
@@ -46,3 +50,8 @@ class OrderReportApiView(ListAPIView):
 # class OrderViewSet(ModelViewSet):
 #     queryset = Order.objects.filter(ordered__year='2020').select_related('customer').prefetch_related('orderitem_set')
 #     serializer_class = OrderSerializer
+
+
+
+
+
