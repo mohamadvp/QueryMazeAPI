@@ -38,6 +38,10 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields = ['product','qty','unit_price']
 
+class OrderItemModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = ['qty','unit_price']
 
 class OrderSerializer(serializers.ModelSerializer):
     # customer_name = serializers.SerializerMethodField()
