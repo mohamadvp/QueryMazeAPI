@@ -1,12 +1,23 @@
-from django.db.models import Q, Count
+from django.db.models import Q, Count, Sum, Max
 from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from collections import defaultdict
-from ..serializers.customerSerializers import CustomerSerializer
+from ..serializers.customerSerializers import CustomerSerializer, CustomerModelSerializer
 from ..models import Customer
+
+class CustomerApiView(ListAPIView):
+    serializer_class = CustomerModelSerializer
+
+    def get_queryset(self):
+        return Customer.objects.annotate(
+            total_number=Count('order'),
+            total_spent=Sum('order__total'),
+            last_order=Max('order__ordered')
+        ).order_by('total_spent')
 
 class DeleteCustomerApiView(ModelViewSet):
     queryset = Customer.objects.all()

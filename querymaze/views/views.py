@@ -19,16 +19,6 @@ class CustomerViewSet(ListAPIView):
         ).order_by('total_spent')
 
 
-class TopCustomerApiView(ListAPIView):
-    serializer_class = TopCustomerSerializer
-    pagination_class = None
-
-    def get_queryset(self):
-        return Customer.objects.annotate(
-            total_spent=Sum('order__total'),
-        ).filter(total_spent__isnull=False).order_by('-total_spent')
-
-
 class BestSellingProduct(ListAPIView):
     serializer_class = BestSellingProductSerializer
 
