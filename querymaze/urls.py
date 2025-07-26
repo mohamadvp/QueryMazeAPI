@@ -11,6 +11,7 @@ from .views.monthlySalesView import MonthlySales
 from .views.topCustomerByCityView import TopCustomerByCity
 from .views.deleteCustomerView import DeleteCustomerApiView
 from .views.duplicatesCustomerView import DuplicatesCustomerApiView
+from .views.topLocationView import TopLocationApiView
 
 router = DefaultRouter()
 router.register(r'customer',OrderByCustomerApiView,basename='customer'),
@@ -28,5 +29,6 @@ path('unslod-product/',UnsoldProductView.as_view(),name='unslod-product'),
 path('monthly-sales/',MonthlySales.as_view(),name='monthly-sales'),
 path('top-customer-by-city/',TopCustomerByCity.as_view(),name='top-customer-by-city'),
 path('duplicates-customer/',DuplicatesCustomerApiView.as_view(),name='duplicates-customer'),  
+path('top-location/',TopLocationApiView.as_view(),name='top-location'),  
 path('', include(router.urls)),
 ]

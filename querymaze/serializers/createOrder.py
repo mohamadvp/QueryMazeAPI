@@ -43,7 +43,7 @@ class OrderCreateSerializer(serializers.Serializer):
         for item in items_data:
             product = Product.objects.get(pk=item['sku'])
             unit_price = product.wholesale_cost
-            line_total = unit_price + item['qty']
+            line_total = unit_price * item['qty']
             OrderItem.objects.create(
                 order = order,
                 product = product,
