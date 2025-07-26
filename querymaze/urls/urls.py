@@ -1,8 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from ..views.views import CustomerViewSet, OrderReportApiView, BestSellingProduct
-from ..views.createOrderView import OrderCreateApiView
-from ..views.orderByCustomerView import OrderByCustomerApiView
 from ..views.unsoldProductsView import UnsoldProductView
 
 

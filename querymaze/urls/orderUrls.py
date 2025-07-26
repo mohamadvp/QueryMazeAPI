@@ -1,7 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from ..views.orderViews import OrderCreateApiView
-from ..views.orderByCustomerView import OrderByCustomerApiView
+from ..views.orderViews import OrderCreateApiView, OrderByCustomerApiView
 
 router = DefaultRouter()
 router.register(r'customer',OrderByCustomerApiView,basename='customer-orders'),
