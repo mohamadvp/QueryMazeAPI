@@ -1,8 +1,8 @@
 from rest_framework.generics import ListAPIView
-from ..serializers.orderByCustomer import CustomerNoOrderSerializers
-from ..models import Customer
+from ...serializers.orderByCustomer import CustomerNoOrderSerializers
+from ...models import Customer
 
-class CustomerNoOrdersView(ListAPIView):
+class CustomerNoOrdersApiView(ListAPIView):
     serializer_class = CustomerNoOrderSerializers
 
     def get_queryset(self):

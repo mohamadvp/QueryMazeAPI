@@ -1,13 +1,12 @@
-from django.db.models.functions import TruncDate
 from django.db.models import ExpressionWrapper, Sum, F, DecimalField, Count
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .. models import OrderItem
+from ...models import OrderItem
 from datetime import datetime
 import calendar
 
 
-class MonthlySales(APIView):
+class MonthlySalesApiView(APIView):
     def get(self,request):
         year = int(request.query_params.get('year'))
         start_month = int(request.query_params.get('start'))

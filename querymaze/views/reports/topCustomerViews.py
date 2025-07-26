@@ -1,7 +1,7 @@
 from django.db.models import Sum
 from rest_framework.generics import ListAPIView
-from ..serializers.topCustomer import TopCustomerSerializers
-from ..models import Customer
+from ...serializers.reportSerializers import TopCustomerSerializers
+from ...models import Customer
 
 class TopCustomerApiView(ListAPIView):
     serializer_class = TopCustomerSerializers

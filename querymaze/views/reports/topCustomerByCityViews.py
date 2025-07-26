@@ -2,8 +2,8 @@ from django.db.models import Sum
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from ..serializers.topCustomer import TopCustomerSerializers
-from ..models import Customer
+from ...serializers.reportSerializers import TopCustomerSerializers
+from ...models import Customer
 
 class TopCustomerByCity(APIView):
     

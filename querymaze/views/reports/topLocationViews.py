@@ -1,7 +1,7 @@
 from django.db.models import Count, ExpressionWrapper, F, Sum, DecimalField
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from ..models import Customer, OrderItem
+from ...models import Customer
 
 
 class TopLocationApiView(APIView):

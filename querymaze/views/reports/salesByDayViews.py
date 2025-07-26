@@ -2,10 +2,10 @@ from django.db.models.functions import TruncDate
 from django.db.models import Sum, Count
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from ..models import Order
+from ...models import Order
 
 
-class SalesByDay(APIView):
+class SalesByDayApiView(APIView):
     def get(self, request):
         start_date = request.query_params.get('start')
         end_date = request.query_params.get('end')
