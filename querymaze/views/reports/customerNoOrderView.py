@@ -1,5 +1,5 @@
 from rest_framework.generics import ListAPIView
-from ...serializers.orderByCustomer import CustomerNoOrderSerializers
+from ...serializers.reportSerializers import CustomerNoOrderSerializers
 from ...models import Customer
 
 class CustomerNoOrdersApiView(ListAPIView):
