@@ -1,36 +1,34 @@
-# QueryMaze
+# QueryMaze API
 
-**QueryMaze** is a Django data exploration game inspired by the [Hanukkah of Data 5784 Challenge](https://hanukkah.bluebird.sh/5784/). The objective is to explore a dataset using Django ORM and solve a series of puzzles.
+An API version of the original [QueryMaze](https://github.com/mohamadvp/QueryMaze) project, built to improve backend development skills with Django and Django REST Framework.
 
----
+##  Project Purpose
 
-##  What is this project?
+- Implementation of multiple API development approaches: ViewSets, Generic Views, and APIView
+- Use of Django ORM and Serializers for efficient, structured data handling
+- Modular and scalable architecture with a focus on clean, maintainable code 
+- Use a different way for high-performance API design
+- Designed for understand and compare different DRF methodologies
 
-This project is a Django/PostgreSQL playground where the goal is to search a maze of data and extract hidden information, like finding a customer! It’s built to help improve your Django ORM skills.
 
-Data is provided by [Bluebird's Hanukkah of Data](https://hanukkah.bluebird.sh/5784-speedrun/data/).
 
----
+##  Installation & Usage
 
-##  Getting Started
+### 1. Install Dependencies
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/querymaze.git
-cd querymaze
-```
-
-### 2. Create and activate a virtual environment
+Make sure Python and pip are installed, then run:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install django djangorestframework python-dotenv psycopg2-binary
 ```
 
+### 2. Apply Migrations
+``` bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
-### 3. Set up PostgreSQL and `.env`
-
+### 3. Set up PostgreSQL and .env
 Make sure PostgreSQL is running and create a database for the project.
 
 Then create a `.env` file in the root directory and define the following:
@@ -46,7 +44,6 @@ ORDERITEM_CSV=/full/path/to/order_items.csv
 
 > You can download the CSV files from the official [Hanukkah of Data Dataset](https://hanukkah.bluebird.sh/5784-speedrun/data/)
 
----
 
 ##  Importing the Data
 
@@ -55,7 +52,6 @@ mysterious
 ```bash
 python manage.py shell
 ```
-
 Inside the shell:
 
 ```python
@@ -65,35 +61,17 @@ import_data()
 
 This will populate the database with all the necessary data from the CSV files.
 
----
 
-##  Solving the Chapters
-
-Each puzzle or chapter has its own script located in the `scripts/` folder. To solve a chapter:
-
+### 4. Run the Development Server
 ```bash
-python manage.py shell
+python manage.py runserver
 ```
 
-Then run the desired function, for example:
-
-```python
-from querymaze.scripts.contractor_phone import find_contractor
-find_contractor()
+### 5. Usage
+```bash
+GET http://127.0.0.1:8000/api/top-customer/
 ```
 
-Repeat this for each chapter to proceed in the game!
 
----
-
-## ✅ Goals
-
-- Practice using Django ORM for complex data queries.
-- Understand patterns in large-scale datasets.
-- Build better confidence with data-driven applications.
-
----
-
-##  License
-
-This project is for educational purposes, inspired by the public [Hanukkah of Data](https://hanukkah.bluebird.sh/5784/) challenge.
+## License
+This project is open-source and free to use for learning and personal development.
