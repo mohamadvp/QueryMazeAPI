@@ -1,6 +1,6 @@
 from django.db.models import Q, Count, Sum, Max
 from rest_framework.decorators import action
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -9,7 +9,7 @@ from collections import defaultdict
 from ..serializers.customerSerializers import CustomerSerializer, CustomerModelSerializer
 from ..models import Customer
 
-class CustomerApiView(ListAPIView):
+class CustomerApiView(ReadOnlyModelViewSet):
     serializer_class = CustomerModelSerializer
 
     def get_queryset(self):
