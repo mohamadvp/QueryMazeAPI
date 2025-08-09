@@ -22,7 +22,7 @@ def import_data():
                         wholesale_cost=row['wholesale_cost'],
                         dims_cm=row['dims_cm'],
                     )
-            with open(env("CUSTOMER-CSV")) as f:
+            with open(env("CUSTOMER_CSV")) as f:
                 print("Importing customers...")
                 reader = csv.DictReader(f)
                 for row in reader:
