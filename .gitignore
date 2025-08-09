@@ -1,6 +1,7 @@
 .env
 /db
 requirements.txt
+/db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
