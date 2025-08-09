@@ -37,7 +37,7 @@ Then create a `.env` file in the root directory and define the following:
 DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/your_db_name
 
 PRODUCT_CSV=/full/path/to/products.csv
-CUSTOMER-CSV=/full/path/to/customers.csv
+CUSTOMER_CSV=/full/path/to/customers.csv
 ORDER_CSV=/full/path/to/orders.csv
 ORDERITEM_CSV=/full/path/to/order_items.csv
 ```
@@ -55,7 +55,7 @@ python manage.py shell
 Inside the shell:
 
 ```python
-from import_script import import_data
+from querymaze.scripts.import_script import import_data
 import_data()
 ```
 
