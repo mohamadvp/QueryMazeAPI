@@ -22,7 +22,7 @@ class OrderCreateSerializer(serializers.Serializer):
         found = set(Product.objects.filter(sku__in=skus).values_list('sku',flat=True))
         for item in items:
             if item['sku'] not in found:
-                raise serializers.ValidationError(f'Product sku {item['sku']} not found!')
+                raise serializers.ValidationError(f"Product sku {item['sku']} not found!")
         return items
     
     def create(self, validated_data):
