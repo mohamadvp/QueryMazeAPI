@@ -9,7 +9,9 @@ COPY config ./config
 COPY querymaze ./querymaze
 COPY manage.py .
 COPY requirements.txt .
+COPY wait-for-it.sh .
 
+RUN chmod +x wait-for-it.sh
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 EXPOSE 8000
