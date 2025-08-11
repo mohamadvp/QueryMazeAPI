@@ -23,38 +23,16 @@ The project is Dockerized with two containers: one for the database and one for 
 docker pull mohammadvp/querymaze-api:latest
 docker pull mohammadvp/querymaze-api-db:latest
 ```
-
 ### 2. Create .env file
 in the project root 
 ```bash
 DATABASE_URL=postgres://postgres:1234@db:5432/querymaze
 ```
-
 ### 3. Start containers
 ```bash
 docker-compose up -d
 ```
-
-### 4. Apply migrations
-```bash
-docker-compose exec <container_name> python manage.py migrate 
-```
-Find the container name:
-```bash 
-docker ps -a 
-```
-
-### 5. Open container shell 
-```bash
-docker exec -it <container_name> bash
-```
-
-
-### 6. Run server inside the container
-```bash 
-python manage.py runserver 0.0.0.0:8000
-```
-### 7. View the api :
+### 4. View the api :
 http://localhost:8000/api/customer/
 
 ### Option 2 - Run manual
