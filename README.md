@@ -1,20 +1,65 @@
 # QueryMaze API
 
 An API version of the original [QueryMaze](https://github.com/mohamadvp/QueryMaze) project, built to improve backend development skills with Django and Django REST Framework.
+The project is Dockerized with two containers: one for the database and one for the application, so users can run it without importing data manually.
 
 ##  Project Purpose
 
-- Implementation of multiple API development approaches: ViewSets, Generic Views, and APIView
-- Use of Django ORM and Serializers for efficient, structured data handling
-- Modular and scalable architecture with a focus on clean, maintainable code 
-- Use a different way for high-performance API design
+- Implement different API development methods: ViewSets, Generic Views, and APIView
+- Use of Django ORM and Serializers for clean and structured data handling
+- Make setup easy with Docker
+- Remove the need for manual data import
+- Explore high-performance API design approaches
 - Designed for understand and compare different DRF methodologies
 
 
 
 ##  Installation & Usage
 
-### 1. Install Dependencies
+### Option 1 – Run with Docker (Recommended)
+
+### 1. Pull the Images
+```bash
+docker pull mohammadvp/querymaze-api:latest
+docker pull mohammadvp/querymaze-api-db:latest
+```
+
+### 2. Create .env file
+in the project root 
+```bash
+DATABASE_URL=postgres://postgres:1234@db:5432/querymaze
+```
+
+### 3. Start containers
+```bash
+docker-compose up -d
+```
+
+### 4. Apply migrations
+```bash
+docker-compose exec <container_name> python manage.py migrate 
+```
+Find the container name:
+```bash 
+docker ps -a 
+```
+
+### 5. Open container shell 
+```bash
+docker exec -it <container_name> bash
+```
+
+
+### 6. Run server inside the container
+```bash 
+python manage.py runserver 0.0.0.0:8000
+```
+### 7. View the api :
+http://localhost:8000/api/customer/
+
+### Option 2 - Run manual
+
+### 1. Install dependencies
 
 Make sure Python and pip are installed, then run:
 
@@ -22,7 +67,7 @@ Make sure Python and pip are installed, then run:
 pip install django djangorestframework python-dotenv psycopg2-binary
 ```
 
-### 2. Apply Migrations
+### 2. Apply migrations
 ``` bash
 python manage.py makemigrations
 python manage.py migrate
@@ -67,10 +112,8 @@ This will populate the database with all the necessary data from the CSV files.
 python manage.py runserver
 ```
 
-### 5. Usage
-```bash
-GET http://127.0.0.1:8000/api/top-customer/
-```
+### 5. View the api :
+http://localhost:8000/api/customer/
 
 
 ## License
